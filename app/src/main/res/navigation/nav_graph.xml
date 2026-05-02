@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tablesFragment">
+
+    <fragment
+        android:id="@+id/tablesFragment"
+        android:name="com.waiter.app.ui.tables.TablesFragment"
+        android:label="Столы">
+        <action
+            android:id="@+id/action_tables_to_order"
+            app:destination="@id/orderFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.waiter.app.ui.order.OrderFragment"
+        android:label="Заказ">
+        <action
+            android:id="@+id/action_order_to_menuPicker"
+            app:destination="@id/menuPickerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menuManagementFragment"
+        android:name="com.waiter.app.ui.menu.MenuManagementFragment"
+        android:label="Меню">
+        <action
+            android:id="@+id/action_menu_to_editDish"
+            app:destination="@id/editDishFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.waiter.app.ui.history.HistoryFragment"
+        android:label="История" />
+
+    <fragment
+        android:id="@+id/menuPickerFragment"
+        android:name="com.waiter.app.ui.order.MenuPickerFragment"
+        android:label="Выбор блюд">
+        <action
+            android:id="@+id/action_menuPicker_to_dishDetail"
+            app:destination="@id/dishDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editDishFragment"
+        android:name="com.waiter.app.ui.menu.EditDishFragment"
+        android:label="Редактирование блюда" />
+
+    <fragment
+        android:id="@+id/dishDetailFragment"
+        android:name="com.waiter.app.ui.menu.DishDetailFragment"
+        android:label="О блюде" />
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.waiter.app.FirstFragment"
+        android:label="First Fragment">
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.waiter.app.SecondFragment"
+        android:label="Second Fragment">
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+
+</navigation>
