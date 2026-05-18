@@ -8,24 +8,28 @@ public class MenuItem {
     @PrimaryKey(autoGenerate = true)
     public long id;
     public String name;
-    public String section;
+    public String menuType; // "Основное", "Детское", "Завтрак"
+    public String section;  // "Напитки", "Закуски", "Салаты", "Горячее", "Паста", "Пицца", "Десерты"
     public double price;
     public String description;
     public String allergens;
     public int cookingTimeMinutes;
-    public String photoPath; // local file path or null
-    public boolean available;
+    public String photoPath;
 
     public MenuItem() {}
 
-    public MenuItem(String name, String section, double price, String description,
-                    String allergens, int cookingTimeMinutes) {
+    public MenuItem(String name, String menuType, String section, double price, String description, String allergens, int time) {
         this.name = name;
+        this.menuType = menuType;
         this.section = section;
         this.price = price;
         this.description = description;
         this.allergens = allergens;
-        this.cookingTimeMinutes = cookingTimeMinutes;
-        this.available = true;
+        this.cookingTimeMinutes = time;
+    }
+
+    @Override
+    public String toString() {
+        return name != null ? name : "";
     }
 }

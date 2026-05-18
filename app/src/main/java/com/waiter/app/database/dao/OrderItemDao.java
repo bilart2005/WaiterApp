@@ -17,7 +17,7 @@ public interface OrderItemDao {
     @Query("SELECT SUM(quantity * menuItemPrice) FROM order_items WHERE orderId = :orderId")
     double getTotalForOrder(long orderId);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insert(OrderItem item);
 
     @Update
@@ -34,4 +34,10 @@ public interface OrderItemDao {
 
     @Query("UPDATE order_items SET comment = :comment WHERE id = :id")
     void updateComment(long id, String comment);
+
+    @Query("UPDATE order_items SET isServed = :served WHERE id = :id")
+    void updateServedStatus(long id, boolean served);
+
+    @Query("SELECT order_items.* FROM order_items JOIN orders ON order_items.orderId = orders.id WHERE orders.status = 'OPEN' ORDER BY orders.createdAt, order_items.addedAt")
+    LiveData<List<OrderItem>> getAllItemsForOpenOrders();
 }

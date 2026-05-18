@@ -4,49 +4,62 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/white"
+    android:padding="20dp">
 
     <TextView
         android:text="Количество"
         android:textSize="14sp"
-        android:textColor="#555"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp">
+        app:hintEnabled="false"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="1.5dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             android:text="1"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:text="Комментарий к блюду"
+        android:text="Комментарий к заказу"
         android:textSize="14sp"
-        android:textColor="#555"
-        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:hint="Например: без лука, аллергия на глютен...">
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="1dp"
+        android:hint="Напр. без лука">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:lines="2"/>
+            android:textColor="@color/black"
+            android:hint="Добавьте примечание..."
+            android:textColorHint="#999999"
+            android:lines="3"/>
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

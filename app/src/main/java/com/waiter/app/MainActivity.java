@@ -24,5 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = binding.bottomNavigation;
         NavigationUI.setupWithNavController(bottomNav, navController);
+
+        // Global error handling to prevent app from being "stuck"
+        Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
+            android.util.Log.e("WaiterApp", "Uncaught exception", throwable);
+            // Optionally restart app or just log
+            System.exit(1);
+        });
     }
 }

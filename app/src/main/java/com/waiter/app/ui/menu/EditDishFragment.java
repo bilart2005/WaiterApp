@@ -32,6 +32,14 @@ public class EditDishFragment extends Fragment {
 
         if (getArguments() != null) {
             editItemId = getArguments().getLong("editItemId", -1);
+            String prefillSection = getArguments().getString("prefillSection");
+            String prefillMenuType = getArguments().getString("prefillMenuType");
+            if (prefillSection != null && editItemId == -1) {
+                binding.etSection.setText(prefillSection);
+            }
+            if (prefillMenuType != null && editItemId == -1) {
+                binding.etMenuType.setText(prefillMenuType);
+            }
         }
 
         if (editItemId != -1) {
@@ -43,6 +51,7 @@ public class EditDishFragment extends Fragment {
                 if (editingItem != null) {
                     requireActivity().runOnUiThread(() -> {
                         binding.etName.setText(editingItem.name);
+                        binding.etMenuType.setText(editingItem.menuType);
                         binding.etSection.setText(editingItem.section);
                         binding.etPrice.setText(String.valueOf((int) editingItem.price));
                         binding.etDescription.setText(editingItem.description);
@@ -53,6 +62,7 @@ public class EditDishFragment extends Fragment {
             }).start();
         } else {
             binding.tvEditTitle.setText("Новое блюдо");
+            binding.etMenuType.setText("Основное");
         }
 
         binding.btnSave.setOnClickListener(v -> saveDish());
@@ -61,26 +71,32 @@ public class EditDishFragment extends Fragment {
 
     private void saveDish() {
         String name = binding.etName.getText().toString().trim();
+        String type = binding.etMenuType.getText().toString().trim();
         String section = binding.etSection.getText().toString().trim();
         String priceStr = binding.etPrice.getText().toString().trim();
         String description = binding.etDescription.getText().toString().trim();
         String allergens = binding.etAllergens.getText().toString().trim();
         String timeStr = binding.etCookingTime.getText().toString().trim();
 
-        if (name.isEmpty() || section.isEmpty() || priceStr.isEmpty()) {
+        if (name.isEmpty() || section.isEmpty() || type.isEmpty()) {
             binding.etName.setError(name.isEmpty() ? "Обязательное поле" : null);
+            binding.etMenuType.setError(type.isEmpty() ? "Обязательное поле" : null);
             binding.etSection.setError(section.isEmpty() ? "Обязательное поле" : null);
-            binding.etPrice.setError(priceStr.isEmpty() ? "Обязательное поле" : null);
             return;
         }
 
         double price;
-        try { price = Double.parseDouble(priceStr); } catch (Exception e) { price = 0; }
+        if (priceStr.isEmpty()) {
+            price = 0.0;
+        } else {
+            try { price = Double.parseDouble(priceStr); } catch (Exception e) { price = 0; }
+        }
         int time;
         try { time = Integer.parseInt(timeStr); } catch (Exception e) { time = 0; }
 
         if (editItemId != -1 && editingItem != null) {
             editingItem.name = name;
+            editingItem.menuType = type;
             editingItem.section = section;
             editingItem.price = price;
             editingItem.description = description;
@@ -88,7 +104,7 @@ public class EditDishFragment extends Fragment {
             editingItem.cookingTimeMinutes = time;
             viewModel.updateMenuItem(editingItem);
         } else {
-            MenuItem item = new MenuItem(name, section, price, description, allergens, time);
+            MenuItem item = new MenuItem(name, type, section, price, description, allergens, time);
             viewModel.insertMenuItem(item);
         }
         Navigation.findNavController(requireView()).navigateUp();

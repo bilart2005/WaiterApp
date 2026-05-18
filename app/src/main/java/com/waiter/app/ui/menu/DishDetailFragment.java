@@ -44,6 +44,11 @@ public class DishDetailFragment extends Fragment {
         }).start();
 
         binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
+        
+        // Setup Toolbar navigation if it exists
+        if (binding.toolbar != null) {
+            binding.toolbar.setNavigationOnClickListener(v -> Navigation.findNavController(v).navigateUp());
+        }
     }
 
     private void bindItem(MenuItem item) {

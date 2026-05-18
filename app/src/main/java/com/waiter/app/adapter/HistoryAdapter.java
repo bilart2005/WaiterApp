@@ -19,6 +19,7 @@ public class HistoryAdapter extends ListAdapter<Order, HistoryAdapter.ViewHolder
 
     public interface OnOrderClickListener {
         void onOrderClick(Order order);
+        void onOrderDelete(Order order);
     }
 
     public HistoryAdapter(OnOrderClickListener listener) {
@@ -54,11 +55,24 @@ public class HistoryAdapter extends ListAdapter<Order, HistoryAdapter.ViewHolder
         holder.binding.tvHistoryTable.setText("Стол " + order.tableNumber);
         holder.binding.tvHistoryTotal.setText(String.format("%.0f ₽", order.totalAmount));
 
-        String date = dateFormat.format(new Date(order.closedAt));
+        boolean isOpen = "OPEN".equals(order.status);
+        long timeToFormat = isOpen ? order.createdAt : order.closedAt;
+        String date = (isOpen ? "[ОТКРЫТ] " : "") + dateFormat.format(new Date(timeToFormat));
+        
         holder.binding.tvHistoryDate.setText(date);
+        holder.itemView.setAlpha(isOpen ? 0.7f : 1.0f);
+
+        holder.binding.btnDeleteHistory.setOnClickListener(v -> {
+            if (listener != null) listener.onOrderDelete(order);
+        });
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) listener.onOrderClick(order);
+        });
+
+        holder.itemView.setOnLongClickListener(v -> {
+            if (listener != null) listener.onOrderDelete(order);
+            return true;
         });
     }
 

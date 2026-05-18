@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_order_to_menuPicker"
             app:destination="@id/menuPickerFragment" />
+        <action
+            android:id="@+id/action_order_to_dishDetail"
+            app:destination="@id/dishDetailFragment" />
     </fragment>
 
     <fragment
@@ -35,6 +38,15 @@
         android:id="@+id/historyFragment"
         android:name="com.waiter.app.ui.history.HistoryFragment"
         android:label="История" />
+
+    <fragment
+        android:id="@+id/serviceFragment"
+        android:name="com.waiter.app.ui.service.ServiceFragment"
+        android:label="Отдача" />
+
+    <action
+        android:id="@+id/action_global_dishDetail"
+        app:destination="@id/dishDetailFragment" />
 
     <fragment
         android:id="@+id/menuPickerFragment"

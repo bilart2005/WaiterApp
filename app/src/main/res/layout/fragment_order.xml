@@ -1,68 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/background">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:navigationIconTint="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_table_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Стол 1"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_add_guest"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ Гость"
+                    android:textColor="@color/white"
+                    app:icon="@android:drawable/ic_input_add"
+                    app:iconTint="@color/white"/>
+
+            </LinearLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:id="@+id/tv_table_title"
-            android:layout_width="0dp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupGuests"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:singleSelection="true"
+                        app:selectionRequired="true"/>
+                </HorizontalScrollView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#10000000"
+                    android:layout_marginVertical="8dp"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/actv_add_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Поиск блюда..."
+                    android:textColor="@color/black"
+                    android:textColorHint="#777777"
+                    android:padding="12dp"
+                    android:background="@android:color/transparent"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:inputType="textCapSentences"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_order_items"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:text="Стол 1"/>
+            android:clipToPadding="false"
+            android:paddingBottom="80dp"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add_dish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+ Добавить"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:textColor="#FFFFFF"
-            app:strokeColor="#FFFFFF"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_order_items"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingTop="8dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Minimized bottom plate with only the button -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:elevation="8dp"
-        android:background="@android:color/white"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/tv_total"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Итого: 0 ₽"/>
+        android:layout_gravity="bottom|center_horizontal"
+        app:cardCornerRadius="32dp"
+        android:layout_margin="16dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@color/primary"
+        app:strokeWidth="0dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_close_order"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Закрыть заказ"
-            android:enabled="false"/>
-    </LinearLayout>
-</LinearLayout>
+            android:layout_height="56dp"
+            android:text="Закрыть стол"
+            android:textColor="@color/white"
+            style="@style/Widget.Material3.Button.UnelevatedButton"
+            android:backgroundTint="@color/primary"
+            android:textSize="16sp"
+            android:paddingHorizontal="32dp"
+            app:icon="@android:drawable/ic_menu_save"
+            app:iconTint="@color/white"
+            app:iconSize="24dp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Hidden compatibility view for tv_total so code doesn't crash -->
+    <TextView android:id="@+id/tv_total" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"/>
+
+    <!-- Hidden compatibility views for legacy buttons -->
+    <View android:id="@+id/btn_back" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"/>
+    <View android:id="@+id/btn_rename_guests" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"/>
+    <View android:id="@+id/btn_quick_close_order" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -10,6 +10,10 @@
         android:icon="@android:drawable/ic_menu_edit"
         android:title="Меню"/>
     <item
+        android:id="@+id/serviceFragment"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="Отдача"/>
+    <item
         android:id="@+id/historyFragment"
         android:icon="@android:drawable/ic_menu_recent_history"
         android:title="История"/>
