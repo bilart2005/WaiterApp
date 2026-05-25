@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:gravity="center_horizontal">
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Организационная структура"
+            android:textSize="18sp" android:textStyle="bold" android:textColor="#1565C0"
+            android:paddingBottom="16dp"/>
+
+        <!-- Директор -->
+        <TextView android:layout_width="200dp" android:layout_height="wrap_content"
+            android:text="Директор" android:gravity="center"
+            android:padding="10dp" android:textStyle="bold" android:textColor="#FFFFFF"
+            android:background="#1565C0"/>
+
+        <View android:layout_width="2dp" android:layout_height="24dp" android:background="#9E9E9E"/>
+
+        <!-- Управляющий -->
+        <TextView android:layout_width="200dp" android:layout_height="wrap_content"
+            android:text="Управляющий / Администратор" android:gravity="center"
+            android:padding="10dp" android:textStyle="bold" android:textColor="#FFFFFF"
+            android:background="#1976D2"/>
+
+        <View android:layout_width="2dp" android:layout_height="24dp" android:background="#9E9E9E"/>
+
+        <!-- Горизонтальная черта -->
+        <View android:layout_width="match_parent" android:layout_height="2dp" android:background="#9E9E9E" android:layout_marginHorizontal="16dp"/>
+
+        <!-- Три отдела -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginTop="0dp">
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center_horizontal">
+                <View android:layout_width="2dp" android:layout_height="20dp" android:background="#9E9E9E"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="👨‍🍳 Кухня" android:gravity="center" android:padding="10dp"
+                    android:textStyle="bold" android:textColor="#212121" android:background="#E3F2FD"
+                    android:layout_marginHorizontal="4dp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="• Шеф-повар\n• Су-шеф\n• Повара\n• Кондитер"
+                    android:padding="8dp" android:textSize="12sp" android:textColor="#424242"
+                    android:layout_marginHorizontal="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center_horizontal">
+                <View android:layout_width="2dp" android:layout_height="20dp" android:background="#9E9E9E"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="🤵 Официанты" android:gravity="center" android:padding="10dp"
+                    android:textStyle="bold" android:textColor="#212121" android:background="#E8F5E9"
+                    android:layout_marginHorizontal="4dp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="• Старший официант\n• Официанты\n• Хостес"
+                    android:padding="8dp" android:textSize="12sp" android:textColor="#424242"
+                    android:layout_marginHorizontal="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center_horizontal">
+                <View android:layout_width="2dp" android:layout_height="20dp" android:background="#9E9E9E"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="🍷 Бар" android:gravity="center" android:padding="10dp"
+                    android:textStyle="bold" android:textColor="#212121" android:background="#FFF3E0"
+                    android:layout_marginHorizontal="4dp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="• Бар-менеджер\n• Бармены\n• Сомелье"
+                    android:padding="8dp" android:textSize="12sp" android:textColor="#424242"
+                    android:layout_marginHorizontal="4dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Роль данного приложения"
+            android:textSize="15sp" android:textStyle="bold" android:textColor="#1565C0"
+            android:paddingTop="20dp" android:paddingBottom="8dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="13sp" android:lineSpacingExtra="4dp" android:textColor="#424242"
+            android:text="Приложение используется официантами для приёма и ведения заказов. Администратор получает доступ к статистике и управлению меню. Кухня и бар работают по распечатанным заявкам или через отдельный экран отдачи."/>
+    </LinearLayout>
+</ScrollView>

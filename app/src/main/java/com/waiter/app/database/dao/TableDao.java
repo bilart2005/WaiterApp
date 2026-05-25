@@ -30,4 +30,7 @@ public interface TableDao {
 
     @Query("UPDATE tables SET number = :num WHERE id = :id")
     void updateNumber(long id, int num);
+
+    @Query("DELETE FROM tables")
+    void deleteAll();
 }

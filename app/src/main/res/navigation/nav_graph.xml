@@ -44,6 +44,21 @@
         android:name="com.waiter.app.ui.service.ServiceFragment"
         android:label="Отдача" />
 
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.waiter.app.ui.statistics.StatisticsFragment"
+        android:label="Статистика" />
+
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.waiter.app.ui.info.InfoFragment"
+        android:label="О системе" />
+
+    <fragment
+        android:id="@+id/diagnosticsFragment"
+        android:name="com.waiter.app.ui.diagnostics.DiagnosticsFragment"
+        android:label="Диагностика" />
+
     <action
         android:id="@+id/action_global_dishDetail"
         app:destination="@id/dishDetailFragment" />
@@ -70,15 +85,16 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.waiter.app.FirstFragment"
-        android:label="First Fragment">
+        android:label="First">
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.waiter.app.SecondFragment"
-        android:label="Second Fragment">
+        android:label="Second">
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />

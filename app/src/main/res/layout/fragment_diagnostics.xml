@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:padding="16dp">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:paddingBottom="24dp">
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Диагностика системы"
+            android:textSize="22sp" android:textStyle="bold" android:textColor="#212121"
+            android:paddingBottom="16dp"/>
+
+        <Button android:id="@+id/btn_run_diag"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="▶ Запустить диагностику"
+            android:backgroundTint="#1565C0" android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp" app:cardElevation="2dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Лог диагностики:" android:textStyle="bold" android:textColor="#424242"
+                    android:paddingBottom="8dp"/>
+                <TextView android:id="@+id/tv_diag_log"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Нажмите «Запустить диагностику»"
+                    android:textSize="13sp" android:fontFamily="monospace"
+                    android:textColor="#212121" android:lineSpacingExtra="4dp"
+                    android:minLines="6"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button android:id="@+id/btn_export_report"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="📄 Экспорт отчёта в Downloads"
+            android:backgroundTint="#2E7D32" android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp"/>
+
+        <Button android:id="@+id/btn_reset_data"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="🔄 Сбросить к заводским данным"
+            android:backgroundTint="#B71C1C" android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+</ScrollView>

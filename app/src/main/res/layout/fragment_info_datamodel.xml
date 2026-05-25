@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Модель данных (БД)"
+            android:textSize="18sp" android:textStyle="bold" android:textColor="#1565C0"
+            android:paddingBottom="12dp"/>
+
+        <!-- MenuItem -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="📗 Таблица: menu_items"
+            android:textSize="15sp" android:textStyle="bold" android:textColor="#2E7D32"
+            android:paddingBottom="4dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:background="#E8F5E9" android:padding="10dp" android:textSize="13sp"
+            android:fontFamily="monospace" android:textColor="#212121"
+            android:text="id          INTEGER  PK\nname        TEXT     Название блюда\nmenuType    TEXT     Тип меню (Основное/Детское)\nsection     TEXT     Раздел (Супы, Закуски...)\nprice       REAL     Цена\ndescription TEXT     Описание\nallergens   TEXT     Аллергены\ncookingTime INTEGER  Время приготовления (мин)\nphotoPath   TEXT     Путь к фото"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#BDBDBD" android:layout_marginVertical="12dp"/>
+
+        <!-- Order -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="📘 Таблица: orders"
+            android:textSize="15sp" android:textStyle="bold" android:textColor="#1565C0"
+            android:paddingBottom="4dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:background="#E3F2FD" android:padding="10dp" android:textSize="13sp"
+            android:fontFamily="monospace" android:textColor="#212121"
+            android:text="id          INTEGER  PK\ntableNumber INTEGER  Номер стола\ncreatedAt   INTEGER  Дата открытия (ms)\nclosedAt    INTEGER  Дата закрытия (ms)\nstatus      TEXT     OPEN / CLOSED\nguestCount  INTEGER  Количество гостей\ntotalAmount REAL     Итоговая сумма\nguestNames  TEXT     Имена гостей\ntableNotes  TEXT     Примечания"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#BDBDBD" android:layout_marginVertical="12dp"/>
+
+        <!-- OrderItem -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="📙 Таблица: order_items"
+            android:textSize="15sp" android:textStyle="bold" android:textColor="#E65100"
+            android:paddingBottom="4dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:background="#FFF3E0" android:padding="10dp" android:textSize="13sp"
+            android:fontFamily="monospace" android:textColor="#212121"
+            android:text="id            INTEGER  PK\norderId       INTEGER  FK → orders.id\nguestNumber   INTEGER  Номер гостя\nmenuItemId    INTEGER  FK → menu_items.id\nmenuItemName  TEXT     Название (копия)\nmenuItemPrice REAL     Цена (копия)\nquantity      INTEGER  Количество\ncomment       TEXT     Комментарий\nisServed      INTEGER  Подано (0/1)\naddedAt       INTEGER  Время добавления"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#BDBDBD" android:layout_marginVertical="12dp"/>
+
+        <!-- Table -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="📕 Таблица: tables"
+            android:textSize="15sp" android:textStyle="bold" android:textColor="#6A1B9A"
+            android:paddingBottom="4dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:background="#F3E5F5" android:padding="10dp" android:textSize="13sp"
+            android:fontFamily="monospace" android:textColor="#212121"
+            android:text="id     INTEGER  PK\nnumber INTEGER  Номер стола\nposX   REAL     Позиция X на схеме\nposY   REAL     Позиция Y на схеме\nsize   INTEGER  Размер иконки стола"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#BDBDBD" android:layout_marginVertical="12dp"/>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="🔗 Связи между таблицами"
+            android:textSize="15sp" android:textStyle="bold" android:textColor="#212121"
+            android:paddingBottom="8dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="13sp" android:lineSpacingExtra="4dp" android:textColor="#424242"
+            android:text="• order_items.orderId → orders.id (один заказ содержит много позиций)\n• order_items.menuItemId → menu_items.id (позиция ссылается на блюдо)\n• orders.tableNumber → tables.number (заказ привязан к столику)\n\nКопирование данных: название и цена блюда копируются в order_items в момент добавления, чтобы история заказов оставалась корректной при изменении меню."/>
+    </LinearLayout>
+</ScrollView>

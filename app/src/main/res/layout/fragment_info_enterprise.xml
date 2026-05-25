@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="О ресторане iL Патио"
+            android:textSize="20sp" android:textStyle="bold" android:textColor="#1565C0"
+            android:paddingBottom="12dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="14sp" android:lineSpacingExtra="4dp" android:textColor="#212121"
+            android:text="iL Патио — итальянский ресторан, работающий в России с 1993 года. Специализируется на блюдах итальянской кухни: пицца, паста, ризотто, а также широкий выбор вин и десертов.\n\nРесторан рассчитан на 80 посадочных мест: 20 столиков в основном зале и 4 столика на летней террасе. Режим работы: ежедневно с 11:00 до 23:00.\n\nОбъект информатизации: управление заказами в ресторане. Официант принимает заказ от гостей, фиксирует его в системе, следит за статусом подачи блюд и закрывает счёт по окончании обслуживания.\n\nПриложение автоматизирует:\n• Приём и учёт заказов по столикам\n• Работу с меню (добавление, редактирование блюд)\n• Контроль статуса подачи\n• Ведение истории заказов\n• Аналитику выручки и популярности блюд"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Основные показатели"
+            android:textSize="16sp" android:textStyle="bold" android:textColor="#1565C0"
+            android:paddingTop="16dp" android:paddingBottom="8dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="14sp" android:lineSpacingExtra="4dp" android:textColor="#212121"
+            android:text="• Количество столиков: 20+\n• Позиций в меню: 100+\n• Средний чек: 1500–2500 ₽\n• Персонал: 4–6 официантов в смену\n• СУБД: SQLite (Room)\n• Платформа: Android 8.0+"/>
+    </LinearLayout>
+</ScrollView>

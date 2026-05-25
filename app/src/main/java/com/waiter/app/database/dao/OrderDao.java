@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.room.*;
 import com.waiter.app.database.entities.Order;
 import com.waiter.app.database.entities.OrderWithItems;
+import com.waiter.app.database.model.DishStat;
+import com.waiter.app.database.model.TableStat;
 import java.util.List;
 
 @Dao
@@ -63,4 +65,30 @@ public interface OrderDao {
 
     @Query("DELETE FROM orders WHERE id = :id")
     void deleteById(long id);
+
+    // ---- STATISTICS ----
+
+    @Query("SELECT COALESCE(SUM(totalAmount), 0) FROM orders WHERE status = 'CLOSED'")
+    double getTotalRevenue();
+
+    @Query("SELECT COALESCE(SUM(totalAmount), 0) FROM orders WHERE status = 'CLOSED' AND closedAt >= :fromMillis")
+    double getRevenueFrom(long fromMillis);
+
+    @Query("SELECT COUNT(*) FROM orders WHERE status = 'OPEN'")
+    int getOpenOrdersCount();
+
+    @Query("SELECT COUNT(*) FROM orders WHERE status = 'CLOSED'")
+    int getClosedOrdersCount();
+
+    @Query("SELECT COUNT(*) FROM orders WHERE status = 'OPEN' AND createdAt < :threshold")
+    int getStaleOpenOrdersCount(long threshold);
+
+    @Query("SELECT COALESCE(AVG(closedAt - createdAt), 0) FROM orders WHERE status = 'CLOSED' AND closedAt > 0")
+    long getAvgOrderDurationMs();
+
+    @Query("SELECT menuItemName as dishName, SUM(quantity) as totalOrdered FROM order_items GROUP BY menuItemName ORDER BY totalOrdered DESC LIMIT 5")
+    List<DishStat> getTopDishes();
+
+    @Query("SELECT tableNumber, COUNT(*) as timesOccupied FROM orders GROUP BY tableNumber ORDER BY timesOccupied DESC")
+    List<TableStat> getTablePopularity();
 }
